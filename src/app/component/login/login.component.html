@@ -4,24 +4,34 @@
             <div class="col-4">
                   <div class="card">
                         <div class="card-body">
-                              <form>
+                              <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && login()">
                                     <div class="mb-3">
                                           <h4>Login</h4>
                                     </div>
                                     <div class="mb-3">
                                           <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                          <input type="email" class="form-control" name="email" [(ngModel)]="email">
+                                          <input type="email" class="form-control" name="Email" [(ngModel)]="email"
+                                                #Email="ngModel"
+                                                [ngClass]="{'is-invalid': loginForm.submitted && Email.invalid }"
+                                                required>
+                                          <small *ngIf="loginForm.submitted && Email.invalid "
+                                                class="invalid-feedback">Email is required*</small>
+
                                     </div>
                                     <div class="mb-3">
                                           <label for="exampleInputPassword1" class="form-label">Password</label>
-                                          <input type="password" class="form-control" name="password"
-                                                [(ngModel)]="password"
-                                                [type]="isTextFieldVisible ? 'text' : 'password'">
-                                          <i [ngClass]="isTextFieldVisible ? 'icon-eye' : 'icon-eye-off'"
+                                          <input type="password" class="form-control" name="Password"
+                                                [(ngModel)]="password" #Password="ngModel"
+                                                [type]="isTextFieldVisible ? 'text' : 'password'" [ngClass]="{
+                                                          'is-invalid': loginForm.submitted && Password.invalid 
+                                                        }" required>
+                                          <i [ngClass]="isTextFieldVisible ? 'bi bi-eye' : 'bi bi-eye-slash'"
                                                 (click)="togglePasswordField()"></i>
+                                          <small *ngIf="loginForm.submitted && Password.invalid "
+                                                class="invalid-feedback">Password is required*</small>
 
                                     </div>
-                                    <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+                                    <button type="submit" class="btn btn-primary">Login</button>
                                     <div class="row">
                                           <div class="col-6">
                                                 <a href="/register" class="txt-style">Need Account ?<span

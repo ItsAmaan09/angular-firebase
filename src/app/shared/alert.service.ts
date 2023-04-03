@@ -13,10 +13,11 @@ export class AlertService {
   }
 
   showSuceesToast(header: string, body: string) {
-    var options = { classname: 'border border-success ', delay: 2000 };
+    var options = { classname: 'bg-success text-light ', delay: 2000 };
     this.toasts.push({ header, body, options });
 
   }
+
 
   showWarningToast(header: string, body: string) {
     var options = { classname: ' border border-info ', delay: 2000 };

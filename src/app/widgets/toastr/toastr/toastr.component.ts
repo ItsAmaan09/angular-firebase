@@ -4,7 +4,7 @@ import { AlertService } from 'src/app/shared/alert.service';
 @Component({
   selector: 'app-toastr',
   template: `
-  <ngb-toast class='position-relative mb-2'   *ngFor="let toast of alertService.toasts"
+  <ngb-toast class=''   *ngFor="let toast of alertService.toasts"
     [header]="toast.header" [autohide]="true" [delay]=" toast.options.delay || 8000"
     (hidden)="remove(toast)" [class]="toast.options.classname" >
     <!-- bg-success & bg-warning -->

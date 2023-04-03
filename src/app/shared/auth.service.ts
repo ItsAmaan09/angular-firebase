@@ -20,7 +20,7 @@ export class AuthService {
       this.router.navigate(['/dashboard']);
     }, err => {
       console.log(err.message);
-      this.alertService.showWarningToast('Warning', err.message);
+      this.alertService.showWarningToast('Warning', err);
       this.router.navigate(['/login']);
     })
   }

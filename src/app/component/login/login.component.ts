@@ -17,8 +17,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    (this.email == '') ? alert('Please enter email') : '';
-    (this.password == '') ? alert('Please enter password') : '';
     this.auth.login(this.email, this.password);
     this.email = '';
     this.password = '';
