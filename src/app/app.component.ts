@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>
-    <app-toastr></app-toastr> 
+  template: `
+  <app-toastr aria-live="polite" aria-atomic="true"></app-toastr> 
+  <router-outlet></router-outlet>
     `,
   styleUrls: []
 })

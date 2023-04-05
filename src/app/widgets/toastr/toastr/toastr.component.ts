@@ -4,10 +4,11 @@ import { AlertService } from 'src/app/shared/alert.service';
 @Component({
   selector: 'app-toastr',
   template: `
-  <ngb-toast class=''   *ngFor="let toast of alertService.toasts"
-    [header]="toast.header" [autohide]="true" [delay]=" toast.options.delay || 8000"
-    (hidden)="remove(toast)" [class]="toast.options.classname" >
-    <!-- bg-success & bg-warning -->
+  <ngb-toast class='position-relative mb-2' *ngFor="let toast of alertService.toasts"
+    [autohide]="true" [delay]=" toast.options.delay || 8000"
+     [class]="toast.options.classname" >
+    <!-- bg-success & bg-warning 
+  (hidden)="remove(toast)" [header]="toast.header" -->
     {{toast.body}}`,
   // styleUrls: ['./toastr.component.scss']
 })
@@ -18,7 +19,7 @@ export class ToastrComponent implements OnInit {
   }
   isTemplate(toast: any) { return toast.textOrTpl instanceof TemplateRef; }
 
-  remove(toast: any) {
-    this.alertService.toasts = this.alertService.toasts.filter(t => t !== toast);
-  }
+  // remove(toast: any) {
+  //   this.alertService.toasts = this.alertService.toasts.filter(t => t !== toast);
+  // }
 }

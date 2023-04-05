@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlertService {
   toasts: any[] = [];
@@ -13,14 +13,12 @@ export class AlertService {
   }
 
   showSuceesToast(header: string, body: string) {
-    var options = { classname: 'bg-success text-light ', delay: 2000 };
+    var options = { classname: 'bg-success text-light', delay: 2000 };
     this.toasts.push({ header, body, options });
-
   }
 
-
   showWarningToast(header: string, body: string) {
-    var options = { classname: ' border border-info ', delay: 2000 };
+    var options = { classname: 'bg-danger text-light', delay: 2000 };
     this.toasts.push({ header, body, options });
   }
 }
