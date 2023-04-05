@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
@@ -10,10 +11,11 @@ export class LoginComponent implements OnInit {
   email: string = ''
   password: string = ''
   isTextFieldVisible: boolean;
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
+    if (this.auth.currentUserValue) { this.router.navigate(['pages']) }
+    // if (this.auth.isLoggedIn()) { this.router.navigate(['pages']) }
   }
 
   login() {
