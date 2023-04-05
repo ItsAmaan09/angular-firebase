@@ -22,22 +22,28 @@ export class AuthService {
 
   // Login Method
   login(email: string, password: string) {
-    this.fireauth.signInWithEmailAndPassword(email, password).then(() => {
+    this.fireauth.signInWithEmailAndPassword(email, password).then((res) => {
       localStorage.setItem('token', 'true')
       this.alertService.showSuceesToast('Success', 'login Successfully');
-      this.router.navigate(['/pages']);
+
+      if (res.user?.emailVerified == true) {
+        this.router.navigate(['/pages']);
+      } else {
+        this.router.navigate(['/verify-email']);
+      }
     }, err => {
       console.log(err.message);
-      this.alertService.showWarningToast('Warning', err);
+      this.alertService.showWarningToast('Warning', err.message);
       this.router.navigate(['/login']);
     })
   }
 
   //Register Method
   register(email: string, password: string) {
-    this.fireauth.createUserWithEmailAndPassword(email, password).then(() => {
+    this.fireauth.createUserWithEmailAndPassword(email, password).then((res) => {
       this.alertService.showSuceesToast('Success', 'Registration Successfully');
       this.router.navigate(['/login']);
+      this.sendEmailForVerification(res.user);
     }, err => {
       console.log(err.message);
       this.alertService.showWarningToast('Warning', err.message);
@@ -57,7 +63,22 @@ export class AuthService {
     })
   }
 
+  // Forgot password
+  forgotPassword(email: string) {
+    this.fireauth.sendPasswordResetEmail(email).then(() => {
+      this.router.navigate(['/verify-email'])
+    }, err => {
+      this.alertService.showWarningToast('Warning', err.message);
+    })
+  }
 
+  sendEmailForVerification(user: any) {
+    user.sendEmailForVerification().then((res: any) => {
+      this.router.navigate(['/verify-email'])
+    }, (err: any) => {
+      this.alertService.showWarningToast('Warning', err.message);
+    })
+  }
   getToken() {
     return localStorage.getItem('token');
   }

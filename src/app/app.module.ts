@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrComponent } from './widgets/toastr/toastr/toastr.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
     LoginComponent,
     RegisterComponent,
     ToastrComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
