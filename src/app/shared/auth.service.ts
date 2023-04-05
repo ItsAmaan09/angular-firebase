@@ -25,7 +25,7 @@ export class AuthService {
     this.fireauth.signInWithEmailAndPassword(email, password).then(() => {
       localStorage.setItem('token', 'true')
       this.alertService.showSuceesToast('Success', 'login Successfully');
-      this.router.navigate(['./pages']);
+      this.router.navigate(['/pages']);
     }, err => {
       console.log(err.message);
       this.alertService.showWarningToast('Warning', err);
@@ -49,7 +49,7 @@ export class AuthService {
   logout() {
     this.fireauth.signOut().then(() => {
       localStorage.removeItem('token');
-      this.router.navigate(['./login']);
+      this.router.navigate(['/login']);
       this.alertService.showSuceesToast('Success', 'Logout Successfully');
     }, err => {
       console.log(err.message);

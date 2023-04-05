@@ -16,8 +16,8 @@ export class AuthGuardService {
 
     canActivate() {
         const currentUser = this.auth.currentUserValue;
-        if (!currentUser) {
-            // if (!this.auth.isLoggedIn()) {
+        // if (!currentUser) {
+        if (!this.auth.isLoggedIn()) {
             this.router.navigate(['login']);
             return false
         }
