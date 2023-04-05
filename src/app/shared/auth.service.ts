@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AlertService } from '../shared/alert.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-
+import { GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, TwitterAuthProvider } from '@angular/fire/auth'
 @Injectable({
   providedIn: 'root'
 })
@@ -85,5 +85,18 @@ export class AuthService {
 
   isLoggedIn() {
     return this.getToken();
+  }
+
+
+  // sign in with google
+  googleSignIn() {
+    debugger
+    return this.fireauth.signInWithPopup(new GoogleAuthProvider).then((res) => {
+      this.router.navigate(['pages']);
+      localStorage.setItem('token', JSON.stringify(res.user?.uid))
+    },
+      err => {
+        this.alertService.showWarningToast('Warning', err.message);
+      })
   }
 }

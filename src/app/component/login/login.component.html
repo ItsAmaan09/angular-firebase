@@ -18,18 +18,20 @@
                                                 class="invalid-feedback">Email is required*</small>
 
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 input-icon">
                                           <label for="exampleInputPassword1" class="form-label">Password</label>
-                                          <input type="password" class="form-control" name="Password"
-                                                [(ngModel)]="password" #Password="ngModel"
-                                                [type]="isTextFieldVisible ? 'text' : 'password'" [ngClass]="{
-                                                          'is-invalid': loginForm.submitted && Password.invalid 
+                                          <div class="position-relative">
+                                                <input type="password" class="form-control" name="Password"
+                                                      [(ngModel)]="password" #Password="ngModel"
+                                                      [type]="isTextFieldVisible ? 'text' : 'password'" [ngClass]="{
+                                                    'is-invalid': loginForm.submitted && Password.invalid 
                                                         }" required>
-                                          <i [ngClass]="isTextFieldVisible ? 'bi bi-eye' : 'bi bi-eye-slash'"
-                                                (click)="togglePasswordField()"></i>
-                                          <small *ngIf="loginForm.submitted && Password.invalid "
-                                                class="invalid-feedback">Password is required*</small>
+                                                <i [ngClass]="isTextFieldVisible ? 'fa-sharp fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
+                                                      (click)="togglePasswordField()"></i>
 
+                                                <small *ngIf="loginForm.submitted && Password.invalid "
+                                                      class="invalid-feedback">Password is required*</small>
+                                          </div>
                                     </div>
                                     <button type="submit" class="btn btn-success">Login</button>
                                     <div class="row">
@@ -40,6 +42,15 @@
                                           <div class="col-6">
                                                 <a href="/forgot-password" class="txt-style">Forgot Password ?</a>
                                           </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                          <a (click)="signInWithGoogle()">
+                                                <div class="card">
+                                                      <div class="card-body">
+                                                            <i class="fa-brands fa-google"></i>Sign in with google
+                                                      </div>
+                                                </div>
+                                          </a>
                                     </div>
                               </form>
                         </div>

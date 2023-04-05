@@ -20,10 +20,13 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.auth.login(this.email, this.password);
-    this.email = '';
-    this.password = '';
+    // this.email = '';
+    // this.password = '';
   }
   togglePasswordField() {
     this.isTextFieldVisible = !this.isTextFieldVisible;
+  }
+  signInWithGoogle() {
+    this.auth.googleSignIn();
   }
 }
